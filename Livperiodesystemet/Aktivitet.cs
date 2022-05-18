@@ -13,6 +13,14 @@ namespace Livperiodesystemet
        public DateTime SlutTidspunkt { get; set; }
 
 
+        public Aktivitet(int id, int minAlder, int maxAlder)
+        {
+            Id = id;
+            MinAlder = minAlder;
+            MaxAlder = maxAlder;
+
+        }
+
         public Aktivitet(int id, int minAlder, int maxAlder, DateTime startTidspunkt, DateTime slutTidspunkt)
         {
             Id = id;
@@ -22,7 +30,7 @@ namespace Livperiodesystemet
             SlutTidspunkt = slutTidspunkt; 
         }
 
-        
+
 
         public override string ToString()
         {

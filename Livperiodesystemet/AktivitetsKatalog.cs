@@ -16,15 +16,16 @@ namespace Livperiodesystemet
 
 
         public AktivitetsKatalog(string aktivitetsNavn, string lokation)
+            
         {
             Lokation = lokation;
             AktivitetsNavn = aktivitetsNavn;
             Aktiviteter = new List<Aktivitet>();
 
-
-
         }
 
+
+        
 
         public override string ToString()
         {
@@ -36,10 +37,17 @@ namespace Livperiodesystemet
         {
             foreach (Aktivitet aktivitet in Aktiviteter)
             {
-                Console.WriteLine($"{aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
+                Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
                 Console.WriteLine("___________________________");
                 Console.WriteLine("___________________________");
             }
         }
+
+        public void AddAktivitet(Aktivitet aktivitet)
+        {
+            Aktiviteter.Add(aktivitet);
+        }
+
+
     }
 }
