@@ -23,6 +23,10 @@ namespace Livperiodesystemet
             SlutTidspunkt = slutTidspunkt; 
         }
 
+        public Aktivitet()
+        {
+
+        }
 
 
         public override string ToString()
@@ -30,5 +34,8 @@ namespace Livperiodesystemet
             return $"Id:{Id}, minimumsAlder:{MinAlder} MaksAlder:{MaxAlder}, startTidspunkt{StartTidspunkt}, slutTidspunkt {SlutTidspunkt}";
 
         }
+
+
+
     }
 }

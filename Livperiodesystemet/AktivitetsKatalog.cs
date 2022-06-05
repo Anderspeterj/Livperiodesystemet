@@ -41,12 +41,65 @@ namespace Livperiodesystemet
                 Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
                 Console.WriteLine("___________________________");
                 Console.WriteLine("___________________________");
-            }
+            }                   
         }
 
-        public void AddAktivitet(Aktivitet aktivitet)
+       
+        public void AddAktivitet()
         {
-            Aktiviteter.Add(aktivitet);
+            try
+            {
+                int id;
+
+                Console.Clear();
+                Console.WriteLine("MinimumsAlder");
+                var MinAlder = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("MaximumsAlder");
+                var MaxAlder = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("StartTidspunkt");
+                var startTidspunkt = DateTime.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("SlutTidspunkt");
+                var slutTidspunkt = DateTime.Parse(Console.ReadLine());
+                
+                if (MinAlder > MaxAlder)
+                {
+                    throw new ArgumentException();
+                }
+                
+
+                try
+                {
+                    if (startTidspunkt > slutTidspunkt)
+                    {
+                        throw new ArgumentException();
+                    }
+                    
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("StartTidspunkt kan ikke være efter sluttidspunkt, prøv igen");
+                }
+
+                Console.WriteLine($"Din aktivitet er nu blevet tilføjet og fået tildelt nummeret {Aktiviteter.Count}");
+                id = Aktiviteter.Count;
+
+
+                Aktivitet NyAktivitet = new Aktivitet(id, MinAlder, MaxAlder, startTidspunkt, slutTidspunkt);
+                Aktiviteter.Add(NyAktivitet);
+
+                
+
+                
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Fejl! Min.Alder kan ikke være højere end Max. Alder.");
+            }
+            
+                     
         }
 
         public void DeleteAktivitet(int Id)
