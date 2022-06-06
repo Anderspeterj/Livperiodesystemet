@@ -17,7 +17,12 @@ namespace Livperiodesystemet
 
         public override string ToString()
         {
-            return $"HoldId: {HoldId}, Id:{Id}, minimumsAlder:{MinAlder} MaksAlder:{MaxAlder}, startTidspunkt{StartTidspunkt}, slutTidspunkt {SlutTidspunkt}";
+            int i = 0;
+            do
+            {
+                return $"HoldId: {HoldId}, Id:{Id}, minimumsAlder:{MinAlder} MaksAlder:{MaxAlder}, startTidspunkt{StartTidspunkt}, slutTidspunkt {SlutTidspunkt}";
+            }
+            while (i < 5);
         }
     }
 }

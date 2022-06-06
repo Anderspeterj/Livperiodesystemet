@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,8 +23,7 @@ namespace Livperiodesystemet
             katalog1.Aktiviteter.Add(aktivitet1);
             katalog1.Aktiviteter.Add(aktivitet2);
             katalog1.Aktiviteter.Add(aktivitet3);
-
-
+            
 
             holdaktivitet.ToString();
             Console.WriteLine("Velkommen til LivperiodeSystemet");

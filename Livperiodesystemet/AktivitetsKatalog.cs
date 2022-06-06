@@ -26,12 +26,19 @@ namespace Livperiodesystemet
         }
 
 
+
         
+
 
         public override string ToString()
         {
-            return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
-
+            int i = 0;
+            do
+            {
+                return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
+            }
+            while (i < 5); 
+                                 
         }
 
         public void PrintAktiviteter()
