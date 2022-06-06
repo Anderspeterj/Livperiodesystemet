@@ -12,7 +12,7 @@ namespace Livperiodesystemet
        public DateTime StartTidspunkt { get; set; }
        public DateTime SlutTidspunkt { get; set; }
 
-
+        
 
         public Aktivitet(int id, int minAlder, int maxAlder, DateTime startTidspunkt, DateTime slutTidspunkt)
         {

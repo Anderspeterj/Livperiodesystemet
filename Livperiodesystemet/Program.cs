@@ -10,26 +10,29 @@ namespace Livperiodesystemet
         {
 
             AktivitetsKatalog katalog1 = new AktivitetsKatalog("Basket", "holbæk");
+            HoldAktivitet holdaktivitet = new HoldAktivitet("gg");
 
+           
 
             var aktivitet1 = new Aktivitet(1, 13, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
             var aktivitet2 = new Aktivitet(2, 14, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
             var aktivitet3 = new Aktivitet(3, 15, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
-            HoldAktivitet hold1 = new HoldAktivitet("DetBlåHold", 2, 14, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
+            
 
 
             katalog1.Aktiviteter.Add(aktivitet1);
             katalog1.Aktiviteter.Add(aktivitet2);
             katalog1.Aktiviteter.Add(aktivitet3);
-            katalog1.Aktiviteter.Add(hold1);
 
-            
 
+
+            holdaktivitet.ToString();
             Console.WriteLine("Velkommen til LivperiodeSystemet");
             Console.WriteLine("");
             katalog1.brugerMenu();
 
-
+            holdaktivitet.ToString();
+            Console.WriteLine(holdaktivitet.ToString());
 
             var UserInput = Console.ReadLine();
 

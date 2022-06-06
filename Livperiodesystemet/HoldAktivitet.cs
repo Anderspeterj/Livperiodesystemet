@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,14 +9,15 @@ namespace Livperiodesystemet
         public string HoldId { get; set; }
         
        
-        public HoldAktivitet(string holdId, int id, int minAlder, int maxAlder, DateTime startTidspunkt, DateTime slutTidspunkt) : base (id, minAlder, maxAlder, startTidspunkt, slutTidspunkt)
+        public HoldAktivitet(string holdId)
         {
             HoldId = holdId;
         }
+       
 
         public override string ToString()
         {
-            return $"{HoldId}";
+            return $"HoldId: {HoldId}, Id:{Id}, minimumsAlder:{MinAlder} MaksAlder:{MaxAlder}, startTidspunkt{StartTidspunkt}, slutTidspunkt {SlutTidspunkt}";
         }
     }
 }
