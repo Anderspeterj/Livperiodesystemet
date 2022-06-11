@@ -14,6 +14,9 @@ namespace Livperiodesystemet
         public string AktivitetsNavn { get; set; }
         public string Lokation { get; set; }
         public List<Aktivitet> Aktiviteter { get; set; }
+        public Dictionary<int, Aktivitet> AktiviteterDic {get; set;}
+       
+            
 
 
         public AktivitetsKatalog(string aktivitetsNavn, string lokation)
@@ -22,8 +25,10 @@ namespace Livperiodesystemet
             Lokation = lokation;
             AktivitetsNavn = aktivitetsNavn;
             Aktiviteter = new List<Aktivitet>();
+            AktiviteterDic = new Dictionary<int, Aktivitet>();
 
         }
+
 
 
 
@@ -33,32 +38,40 @@ namespace Livperiodesystemet
         public override string ToString()
         {
             int i = 0;
-            do
+            while (i == 1);
+           
+            foreach(Aktivitet aktivitet in Aktiviteter)
             {
-                return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
+                Console.WriteLine($"id : {aktivitet.Id}, {aktivitet.MinAlder} {aktivitet.MaxAlder}, {aktivitet.StartTidspunkt}, {aktivitet.SlutTidspunkt}");
+                i++;
             }
-            while (i < 5); 
-                                 
+            
+                return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
+            
+                                              
         }
 
-        public void PrintAktiviteter()
-        {
-            foreach (Aktivitet aktivitet in Aktiviteter)
-            {
-                Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
-                Console.WriteLine("___________________________");
-                Console.WriteLine("___________________________");
-            }                   
-        }
+        //public void PrintAktiviteter()
+        //{
+        //    foreach (Aktivitet aktivitet in Aktiviteter)
+        //    {
+        //        Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
+        //        Console.WriteLine("___________________________");
+        //        Console.WriteLine("___________________________");
+        //    }                   
+        //}
 
        
         public void AddAktivitet()
         {
+            
             try
             {
-                int id;
+                
 
                 Console.Clear();
+                Console.WriteLine("id");
+                var Id = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("MinimumsAlder");
                 var MinAlder = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("MaximumsAlder");
@@ -91,10 +104,10 @@ namespace Livperiodesystemet
                 }
 
                 Console.WriteLine($"Din aktivitet er nu blevet tilføjet og fået tildelt nummeret {Aktiviteter.Count}");
-                id = Aktiviteter.Count;
+                
 
 
-                Aktivitet NyAktivitet = new Aktivitet(id, MinAlder, MaxAlder, startTidspunkt, slutTidspunkt);
+                Aktivitet NyAktivitet = new Aktivitet(Id, MinAlder, MaxAlder, startTidspunkt, slutTidspunkt);
                 Aktiviteter.Add(NyAktivitet);
 
                 
@@ -111,8 +124,25 @@ namespace Livperiodesystemet
 
         public void DeleteAktivitet(int Id)
         {
-            Aktiviteter.RemoveAt(Id - 1); 
+            var SletAktivitet = Aktiviteter.Single(aktivitet => aktivitet.Id == Id);
+            Aktiviteter.Remove(SletAktivitet);
         }
+        
+        #region Directionary Methods
+
+        public void DeleteAktivitetDic(int Id)
+        {
+            AktiviteterDic.Remove(Id); 
+        }
+        
+        public void AddAktivitet(Aktivitet aktivitet)
+        {
+            AktiviteterDic.Add(aktivitet.Id, aktivitet)
+        }
+
+        #endregion
+
+
 
         public void UpdateAktivitet(int Id)
         {
@@ -139,20 +169,54 @@ namespace Livperiodesystemet
                         aktivitet.StartTidspunkt = Convert.ToDateTime(Console.ReadLine());
                         Console.WriteLine("vælg ny DateTime");
                         aktivitet.SlutTidspunkt = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine($"Aktivitet nummer {Id}, er hermed opdateret");
+
+                   
 
 
+
+
+                    try
+                    {
+                        if (aktivitet.StartTidspunkt > aktivitet.SlutTidspunkt)
+                        {
+                            throw new ArgumentException();
+                        }
 
                     }
+                    catch (ArgumentException)
+                    {
+                        Console.WriteLine("StartTidspunkt kan ikke være efter sluttidspunkt, prøv igen");
+                    }
+
+                    try
+                    {
+                        if (aktivitet.MinAlder > aktivitet.MaxAlder)
+                        {
+                            throw new ArgumentException();
+                        }
+
+                    }
+                    catch (ArgumentException)
+                    {
+                        Console.WriteLine("Min.Alder kan ikke være højere end max alder.");
+                    }
+
+
+                }
                 }
                 catch (System.FormatException)
                 {
                     Console.Clear();
-                    Console.WriteLine("Venligst kun indsæt datoen i følgende format : 00-00-20xx");
+                    Console.WriteLine("Venligst kun indsæt datoen i følgende format : DD-MM-YY-HH");
                 Console.WriteLine("Tast 5 for at vende tilbage");
 
 
-            }
+                }
             
+
+
+
         }
             
        

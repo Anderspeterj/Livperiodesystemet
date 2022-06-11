@@ -10,49 +10,59 @@ namespace Livperiodesystemet
         {
 
             AktivitetsKatalog katalog1 = new AktivitetsKatalog("Basket", "holbæk");
-            HoldAktivitet holdaktivitet = new HoldAktivitet("gg");
+            //HoldAktivitet holdaktivitet = new HoldAktivitet("gg");
 
-           
-
-            var aktivitet1 = new Aktivitet(1, 13, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
-            var aktivitet2 = new Aktivitet(2, 14, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
-            var aktivitet3 = new Aktivitet(3, 15, 18, new DateTime(2022, 08, 14), new DateTime(2022, 08, 21));
+            AktivitetsKatalog katalog2 = new AktivitetsKatalog("Fodbold", "Vanløse");
             
+
+
+
+            var aktivitet1 = new Aktivitet(1, 9, 12, new DateTime(2022, 08, 14, 9, 00, 00), new DateTime(2022, 08, 14, 11, 00, 00));
+            var aktivitet2 = new Aktivitet(2, 14, 18, new DateTime(2022, 08, 14, 12, 00, 00), new DateTime(2022, 08, 14, 14, 00, 00));
+            var aktivitet3 = new Aktivitet(3, 12, 16, new DateTime(2022, 08, 14, 16, 00, 00), new DateTime(2022, 08, 21, 17, 00, 00));
+
 
 
             katalog1.Aktiviteter.Add(aktivitet1);
             katalog1.Aktiviteter.Add(aktivitet2);
             katalog1.Aktiviteter.Add(aktivitet3);
-            
 
-            holdaktivitet.ToString();
+            Console.WriteLine(katalog1);
+
+
+
+
+
+
+
+
+
+            Console.WriteLine();
+
             Console.WriteLine("Velkommen til LivperiodeSystemet");
             Console.WriteLine("");
             katalog1.brugerMenu();
 
-            holdaktivitet.ToString();
-            Console.WriteLine(holdaktivitet.ToString());
+
 
             var UserInput = Console.ReadLine();
 
             while (true)
             {
-               
-                
-                    switch (UserInput)
-                    {
-                        case "1":
+
+
+                switch (UserInput)
+                {
+                    case "1":
 
                         katalog1.AddAktivitet();
-                        
+
                         break;
-
-
 
                     case "2":
                         Console.Clear();
                         katalog1.ToString();
-                        katalog1.PrintAktiviteter();
+                        
                         break;
 
                     case "3":
@@ -68,16 +78,16 @@ namespace Livperiodesystemet
                         Console.WriteLine("Indtast nummeret på den aktivtet som du gerne vil opdatere");
                         Id = Convert.ToInt32(Console.ReadLine());
                         katalog1.UpdateAktivitet(Id);
-                        
+
                         //Console.WriteLine($"Aktivitet nummer {Id}, er hermed opdateret");
                         break;
 
                     case "x":
                         Console.Clear();
-                        Console.WriteLine("Tryk t for at få vist brugermenuen igen");
+                        Console.WriteLine("Tryk 5 for at få vist brugermenuen igen");
                         break;
 
-                    case "t":
+                    case "5":
                         Console.Clear();
                         katalog1.brugerMenu();
 
@@ -90,23 +100,7 @@ namespace Livperiodesystemet
 
 
             }
-                
-                
-                
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
-}   }   }
+        }
+    }
+}
