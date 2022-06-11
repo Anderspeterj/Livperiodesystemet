@@ -29,39 +29,51 @@ namespace Livperiodesystemet
 
         }
 
-
-
-
-        
-
-
         public override string ToString()
         {
-            int i = 0;
-            while (i == 1);
-           
-            foreach(Aktivitet aktivitet in Aktiviteter)
+
+
+            foreach (KeyValuePair<int, Aktivitet> aktivitet in AktiviteterDic)
             {
-                Console.WriteLine($"id : {aktivitet.Id}, {aktivitet.MinAlder} {aktivitet.MaxAlder}, {aktivitet.StartTidspunkt}, {aktivitet.SlutTidspunkt}");
-                i++;
+                Console.WriteLine($"{aktivitet.Key}, {aktivitet.Value}");
+
             }
-            
-                return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
-            
-                                              
+
+            return $"lejrId:{AktivitetsNavn}, {Lokation}";
         }
 
-        //public void PrintAktiviteter()
+
+
+
+
+
+        //public override string ToString()
         //{
+        //    int i = 0;
+        //    while (i == 1) ;
+
         //    foreach (Aktivitet aktivitet in Aktiviteter)
         //    {
-        //        Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
-        //        Console.WriteLine("___________________________");
-        //        Console.WriteLine("___________________________");
-        //    }                   
+        //        Console.WriteLine($"id : {aktivitet.Id}, {aktivitet.MinAlder} {aktivitet.MaxAlder}, {aktivitet.StartTidspunkt}, {aktivitet.SlutTidspunkt}");
+        //        i++;
+        //    }
+
+        //    return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
+
+
         //}
 
-       
+        public void PrintAktiviteter()
+        {
+            foreach (Aktivitet aktivitet in Aktiviteter)
+            {
+                Console.WriteLine($"{AktivitetsNavn}, {Lokation}, {aktivitet.Id}, {aktivitet.MinAlder}  {aktivitet.MaxAlder}  {aktivitet.StartTidspunkt}  {aktivitet.SlutTidspunkt}");
+                Console.WriteLine("___________________________");
+                Console.WriteLine("___________________________");
+            }
+        }
+
+
         public void AddAktivitet()
         {
             
@@ -135,9 +147,9 @@ namespace Livperiodesystemet
             AktiviteterDic.Remove(Id); 
         }
         
-        public void AddAktivitet(Aktivitet aktivitet)
+        public void AddAktivitetDic(Aktivitet aktivitet)
         {
-            AktiviteterDic.Add(aktivitet.Id, aktivitet)
+            AktiviteterDic.Add(aktivitet.Id, aktivitet);
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿    using System;
+﻿   using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +9,7 @@ namespace Livperiodesystemet
         static void Main(string[] args)
         {
 
-            AktivitetsKatalog katalog1 = new AktivitetsKatalog("Basket", "holbæk");
+            //AktivitetsKatalog katalog1 = new AktivitetsKatalog("Basket", "holbæk");
             //HoldAktivitet holdaktivitet = new HoldAktivitet("gg");
 
             AktivitetsKatalog katalog2 = new AktivitetsKatalog("Fodbold", "Vanløse");
@@ -23,11 +23,11 @@ namespace Livperiodesystemet
 
 
 
-            katalog1.Aktiviteter.Add(aktivitet1);
-            katalog1.Aktiviteter.Add(aktivitet2);
-            katalog1.Aktiviteter.Add(aktivitet3);
+            katalog2.AddAktivitetDic(aktivitet1);
+            katalog2.AddAktivitetDic(aktivitet2);
+            katalog2.AddAktivitetDic(aktivitet3);
 
-            Console.WriteLine(katalog1);
+            Console.WriteLine(katalog2);
 
 
 
@@ -41,65 +41,65 @@ namespace Livperiodesystemet
 
             Console.WriteLine("Velkommen til LivperiodeSystemet");
             Console.WriteLine("");
-            katalog1.brugerMenu();
+           
 
 
+            
+            //var UserInput = Console.ReadLine();
 
-            var UserInput = Console.ReadLine();
-
-            while (true)
-            {
+            //while (true)
+            //{
 
 
-                switch (UserInput)
-                {
-                    case "1":
+            //    switch (UserInput)
+            //    {
+            //        case "1":
 
-                        katalog1.AddAktivitet();
+            //            katalog1.AddAktivitet();
 
-                        break;
+            //            break;
 
-                    case "2":
-                        Console.Clear();
-                        katalog1.ToString();
+            //        case "2":
+            //            Console.Clear();
+            //            katalog1.ToString();
                         
-                        break;
+            //            break;
 
-                    case "3":
-                        Console.Clear();
-                        Console.WriteLine("Indtast nummeret på den aktivitet du gerne vil slette");
-                        var Id = Convert.ToInt32(Console.ReadLine());
-                        katalog1.DeleteAktivitet(Id);
-                        Console.WriteLine($"Aktivitet nummer {Id}, er hermed slettet");
-                        break;
+            //        case "3":
+            //            Console.Clear();
+            //            Console.WriteLine("Indtast nummeret på den aktivitet du gerne vil slette");
+            //            var Id = Convert.ToInt32(Console.ReadLine());
+            //            katalog1.DeleteAktivitet(Id);
+            //            Console.WriteLine($"Aktivitet nummer {Id}, er hermed slettet");
+            //            break;
 
-                    case "4":
-                        Console.Clear();
-                        Console.WriteLine("Indtast nummeret på den aktivtet som du gerne vil opdatere");
-                        Id = Convert.ToInt32(Console.ReadLine());
-                        katalog1.UpdateAktivitet(Id);
+            //        case "4":
+            //            Console.Clear();
+            //            Console.WriteLine("Indtast nummeret på den aktivtet som du gerne vil opdatere");
+            //            Id = Convert.ToInt32(Console.ReadLine());
+            //            katalog1.UpdateAktivitet(Id);
 
-                        //Console.WriteLine($"Aktivitet nummer {Id}, er hermed opdateret");
-                        break;
+            //            //Console.WriteLine($"Aktivitet nummer {Id}, er hermed opdateret");
+            //            break;
 
-                    case "x":
-                        Console.Clear();
-                        Console.WriteLine("Tryk 5 for at få vist brugermenuen igen");
-                        break;
+            //        case "x":
+            //            Console.Clear();
+            //            Console.WriteLine("Tryk 5 for at få vist brugermenuen igen");
+            //            break;
 
-                    case "5":
-                        Console.Clear();
-                        katalog1.brugerMenu();
+            //        case "5":
+            //            Console.Clear();
+            //            katalog1.brugerMenu();
 
-                        break;
+            //            break;
 
-                }
+            //    }
 
-                UserInput = Console.ReadLine();
+            //    UserInput = Console.ReadLine();
 
 
 
-            }
+            //}
 
         }
     }
