@@ -29,39 +29,39 @@ namespace Livperiodesystemet
 
         }
 
-        public override string ToString()
-        {
-
-
-            foreach (KeyValuePair<int, Aktivitet> aktivitet in AktiviteterDic)
-            {
-                Console.WriteLine($"{aktivitet.Key}, {aktivitet.Value}");
-
-            }
-
-            return $"lejrId:{AktivitetsNavn}, {Lokation}";
-        }
-
-
-
-
-
-
         //public override string ToString()
         //{
-        //    int i = 0;
-        //    while (i == 1) ;
 
-        //    foreach (Aktivitet aktivitet in Aktiviteter)
+
+        //    foreach (KeyValuePair<int, Aktivitet> aktivitet in AktiviteterDic)
         //    {
-        //        Console.WriteLine($"id : {aktivitet.Id}, {aktivitet.MinAlder} {aktivitet.MaxAlder}, {aktivitet.StartTidspunkt}, {aktivitet.SlutTidspunkt}");
-        //        i++;
+        //        Console.WriteLine($"{aktivitet.Key}, {aktivitet.Value}");
+
         //    }
 
-        //    return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
-
-
+        //    return $"lejrId:{AktivitetsNavn}, {Lokation}";
         //}
+
+
+
+
+
+
+        public override string ToString()
+        {
+            int i = 0;
+            while (i == 1) ;
+
+            foreach (Aktivitet aktivitet in Aktiviteter)
+            {
+                Console.WriteLine($"id : {aktivitet.Id}, {aktivitet.MinAlder} {aktivitet.MaxAlder}, {aktivitet.StartTidspunkt}, {aktivitet.SlutTidspunkt}");
+                i++;
+            }
+
+            return $"Aktivitetsnavn:{AktivitetsNavn}, lokation:{Lokation}";
+
+
+        }
 
         public void PrintAktiviteter()
         {
@@ -84,6 +84,9 @@ namespace Livperiodesystemet
                 Console.Clear();
                 Console.WriteLine("id");
                 var Id = Convert.ToInt32(Console.ReadLine());
+                
+                Console.WriteLine("NavnId");
+                var NavnId = Console.ReadLine();
                 Console.WriteLine("MinimumsAlder");
                 var MinAlder = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("MaximumsAlder");
@@ -116,10 +119,10 @@ namespace Livperiodesystemet
                 }
 
                 Console.WriteLine($"Din aktivitet er nu blevet tilføjet og fået tildelt nummeret {Aktiviteter.Count}");
-                
 
 
-                Aktivitet NyAktivitet = new Aktivitet(Id, MinAlder, MaxAlder, startTidspunkt, slutTidspunkt);
+
+                Aktivitet NyAktivitet = new Aktivitet(Id, NavnId, MinAlder, MaxAlder, startTidspunkt, slutTidspunkt);
                 Aktiviteter.Add(NyAktivitet);
 
                 
@@ -230,21 +233,24 @@ namespace Livperiodesystemet
 
 
         }
-            
-       
+
+
+        public void VisMatchendeAkitivteter(string searchPhrase)
+        {
+            var matchendeAktiviteter = Aktiviteter.Where(p => p._navnId.Contains(searchPhrase)).ToList();
+            foreach (Aktivitet aktivitet in matchendeAktiviteter)
+            {
+                PrintAktiviteter();
+            }
+
+        }
+
         public void brugerMenu()
         {
-            Console.WriteLine("Tast 1 for at tilføje en ny aktivitet");
+            Console.WriteLine("Tast 1 for at opdatere en aktivitet");
             Console.WriteLine("______________________________________");
-            Console.WriteLine("Tast t for at få vist brugermenuen");
+            Console.WriteLine("Tast 2 for at søge efter en aktivitet");
             Console.WriteLine();
-            Console.WriteLine("Tast 2 for at se alle aktiviteterne");
-            Console.WriteLine();
-            Console.WriteLine("Tast 3 for at slette den valgte aktivtet");
-            Console.WriteLine();
-            Console.WriteLine("Tast 4 for at vælg den aktivitet du gerne vil opdatere");
-            Console.WriteLine();
-            Console.WriteLine("Tast t for at få vist brugermenuen igen");
         }
      
 

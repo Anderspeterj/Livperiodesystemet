@@ -9,8 +9,8 @@ namespace Livperiodesystemet
         public string HoldId { get; set; }
         public List<Aktivitet> Aktiviteter { get; set; }
 
-        public HoldAktivitet(int Id, int minAlder, int maxAlder, DateTime startTidspunkt, DateTime slutTidspunkt,
-            string holdId) : base (Id, minAlder, maxAlder, startTidspunkt, slutTidspunkt)
+        public HoldAktivitet(int Id, string navnId, int minAlder, int maxAlder, DateTime startTidspunkt, DateTime slutTidspunkt,
+            string holdId) : base (Id, navnId, minAlder, maxAlder, startTidspunkt, slutTidspunkt)
 
         {
             HoldId = holdId;

@@ -17,17 +17,17 @@ namespace Livperiodesystemet
 
 
 
-            var aktivitet1 = new Aktivitet(1, 9, 12, new DateTime(2022, 08, 14, 9, 00, 00), new DateTime(2022, 08, 14, 11, 00, 00));
-            var aktivitet2 = new Aktivitet(2, 14, 18, new DateTime(2022, 08, 14, 12, 00, 00), new DateTime(2022, 08, 14, 14, 00, 00));
-            var aktivitet3 = new Aktivitet(3, 12, 16, new DateTime(2022, 08, 14, 16, 00, 00), new DateTime(2022, 08, 21, 17, 00, 00));
+            var aktivitet1 = new Aktivitet(1, "ggwp", 9, 12, new DateTime(2022, 08, 14, 9, 00, 00), new DateTime(2022, 08, 14, 11, 00, 00));
+            var aktivitet2 = new Aktivitet(2, "ggwplol", 14, 18, new DateTime(2022, 08, 14, 12, 00, 00), new DateTime(2022, 08, 14, 14, 00, 00));
+            var aktivitet3 = new Aktivitet(3, "ggwpff", 12, 16, new DateTime(2022, 08, 14, 16, 00, 00), new DateTime(2022, 08, 21, 17, 00, 00));
 
 
 
-            katalog2.AddAktivitetDic(aktivitet1);
-            katalog2.AddAktivitetDic(aktivitet2);
-            katalog2.AddAktivitetDic(aktivitet3);
+            
 
             Console.WriteLine(katalog2);
+            Console.WriteLine(aktivitet1._id);
+            Console.WriteLine(aktivitet2.Id);
 
 
 
@@ -41,66 +41,59 @@ namespace Livperiodesystemet
 
             Console.WriteLine("Velkommen til LivperiodeSystemet");
             Console.WriteLine("");
-           
-
-
-            
-            //var UserInput = Console.ReadLine();
-
-            //while (true)
-            //{
-
-
-            //    switch (UserInput)
-            //    {
-            //        case "1":
-
-            //            katalog1.AddAktivitet();
-
-            //            break;
-
-            //        case "2":
-            //            Console.Clear();
-            //            katalog1.ToString();
-                        
-            //            break;
-
-            //        case "3":
-            //            Console.Clear();
-            //            Console.WriteLine("Indtast nummeret på den aktivitet du gerne vil slette");
-            //            var Id = Convert.ToInt32(Console.ReadLine());
-            //            katalog1.DeleteAktivitet(Id);
-            //            Console.WriteLine($"Aktivitet nummer {Id}, er hermed slettet");
-            //            break;
-
-            //        case "4":
-            //            Console.Clear();
-            //            Console.WriteLine("Indtast nummeret på den aktivtet som du gerne vil opdatere");
-            //            Id = Convert.ToInt32(Console.ReadLine());
-            //            katalog1.UpdateAktivitet(Id);
-
-            //            //Console.WriteLine($"Aktivitet nummer {Id}, er hermed opdateret");
-            //            break;
-
-            //        case "x":
-            //            Console.Clear();
-            //            Console.WriteLine("Tryk 5 for at få vist brugermenuen igen");
-            //            break;
-
-            //        case "5":
-            //            Console.Clear();
-            //            katalog1.brugerMenu();
-
-            //            break;
-
-            //    }
-
-            //    UserInput = Console.ReadLine();
+            Console.WriteLine("1 for add");
+            Console.WriteLine("2 for update");
+            Console.WriteLine("3 for search");
 
 
 
-            //}
 
-        }
+            var UserInput = Console.ReadLine();
+
+            while (true)
+            {
+
+
+                    switch (UserInput)
+                    {
+                        case "1":
+
+                        Console.Clear();
+                        katalog2.AddAktivitet();
+                        break;
+
+                    case "2":
+                        Console.Clear(); 
+                        Console.Clear();
+                        Console.WriteLine("Vælg et nummer fra menuen for at opdatere din pizza");
+                        Console.WriteLine();
+                        katalog2.PrintAktiviteter();
+                        int nummer = Convert.ToInt32(Console.ReadLine());
+                        katalog2.UpdateAktivitet(nummer);
+
+                        break;
+
+                        case "3":
+                        Console.Clear();
+                        Console.WriteLine("Søg efter en aktivitet via. navn");
+                        Console.WriteLine();
+                        var searchPhrase = Console.ReadLine();
+
+                        katalog2.VisMatchendeAkitivteter(searchPhrase);
+
+
+                        break;
+
+                       
+
+                    }
+
+                    UserInput = Console.ReadLine();
+
+
+
+                }
+
+            }
     }
 }
